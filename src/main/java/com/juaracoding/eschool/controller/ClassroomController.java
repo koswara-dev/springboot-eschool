@@ -1,23 +1,23 @@
 package com.juaracoding.eschool.controller;
 
 import com.juaracoding.eschool.service.ClassroomService;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/classrooms")
 public class ClassroomController {
 
-    private final ClassroomService categoryService;
+    @Autowired
+    private ClassroomService classroomService;
 
-    public ClassroomController(ClassroomService categoryService) {
-        this.categoryService = categoryService;
+    @GetMapping("/{id}")
+    public void getClassroomById(@PathVariable Long id) {
+        classroomService.getClassroomById(id);
     }
 
     @DeleteMapping("/{id}")
     public void deleteClassroom(@PathVariable Long id) {
-        categoryService.deleteClassroom(id);
+        classroomService.deleteClassroom(id);
     }
 }

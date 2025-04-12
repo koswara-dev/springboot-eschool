@@ -17,7 +17,7 @@ public class Student {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "classroom_id", nullable = true)
+    @JoinColumn(name = "classroom_id", foreignKey = @ForeignKey(name = "fk_students_classroom_id"), nullable = true)
     private Classroom classroom;
 
 }

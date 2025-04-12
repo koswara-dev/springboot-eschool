@@ -1,5 +1,6 @@
 package com.juaracoding.eschool.service;
 
+import com.juaracoding.eschool.exception.ResourceNotFoundException;
 import com.juaracoding.eschool.model.Classroom;
 import com.juaracoding.eschool.repository.ClassroomRepository;
 import com.juaracoding.eschool.repository.StudentRepository;
@@ -15,11 +16,16 @@ public class ClassroomService {
     @Autowired
     private StudentRepository studentRepository;
 
-    public void deleteClassroom(Long categoryId) {
-        Classroom classroom = classroomRepository.findById(categoryId)
-                .orElseThrow(() -> new RuntimeException("Classroom not found"));
+    public Classroom getClassroomById(Long id){
+        return classroomRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Classroom not found with id: "+id));
+    }
 
-        var students = studentRepository.findByClassroomId(categoryId);
+    public void deleteClassroom(Long id) {
+        Classroom classroom = classroomRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Classroom not found with id: "+id));
+
+        var students = studentRepository.findByClassroomId(id);
         students.forEach(student -> student.setClassroom(null));
         studentRepository.saveAll(students);
 
