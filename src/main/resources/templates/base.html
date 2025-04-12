@@ -1,0 +1,56 @@
+<!--
+=========================================================
+* Soft UI Dashboard Tailwind - v1.0.5
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-tailwind
+* Copyright 2023 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+* Coded by Creative Tim
+
+TODO: layouting, fragment insert
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head xmlns:th="http://www.w3.org/1999/xhtml">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Login - Soft UI Dashboard</title>
+  <link th:replace="~{shared/link}">
+  <!-- Nepcha Analytics (nepcha.com) -->
+  <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
+  <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+</head>
+
+  <body class="m-0 font-sans antialiased font-normal bg-white text-start text-base leading-default text-slate-500">
+    <div class="container sticky top-0 z-sticky">
+      <div class="flex flex-wrap -mx-3">
+        <div class="w-full max-w-full px-3 flex-0">
+
+          <nav th:replace="~{shared/navbar}"></nav>
+
+        </div>
+      </div>
+    </div>
+    <main class="mt-0 transition-all duration-200 ease-soft-in-out">
+
+<!--      <th:block th:insert="~{::content}"></th:block>-->
+      <section th:replace="sign-in"></section>
+
+    </main>
+
+    <footer th:replace="~{shared/footer}"></footer>
+
+  </body>
+
+  <script th:replace="~{shared/script}"></script>
+
+</html>
